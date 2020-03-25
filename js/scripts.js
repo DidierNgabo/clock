@@ -3,6 +3,7 @@ setInterval(setClock,1000);
 const hourHand=document.querySelector("[hour-hand]");
 const minutesHand=document.querySelector("[minutes-hand]");
 const secondsHand=document.querySelector("[second-hand]");
+const messageText=document.querySelector("[message]");
  
 
 function setClock(){
@@ -19,7 +20,21 @@ function setClock(){
 function setRotation(element,rotationRatio){
     element.style.setProperty('--rotation',rotationRatio * 360);
 }
+function setMessage(){
+    const date=new Date();
+    const hours=date.getHours();
+
+    if( hours < 12) {
+        messageText.textContent= "Good morning";
+
+    } else if(hours > 12 && hours < 18 ){
+        messageText.textContent= "Good Afternoon";
+    } else{
+        messageText.textContent= "Good evening";
+    }
+}
 setClock();
+setMessage();
 
 
 
